@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> Feli Cumple :3 </title>
+  <title> Little Game Trivia </title>
   <style>
     *,
     *::before,
@@ -217,10 +217,10 @@
                   DIALOGOS:
     */
     const DIALOGOS = {
-      "1,1": "Hola! ¿Qué dice la muda? \n7u7r",
-      "10,1": "¿Y si la vida fuera un jardin... y si...",
-      "5,10": "Las puertas se abren, con llave jejeje",
-      "1,7": "Espero y el sol te abrace siempre y la lune siga reflejando tus pasos en la noche...\nTe gusta el pan? xD"
+      "1,1": "Hi, What does the mute say?  \n (Hola! ¿Qué dice la muda? \n7u7r)",
+      "10,1": "Can you imagine the life as a garden... life as... \n (¿Y si la vida fuera un jardin... y si...)",
+      "5,10": "Doors only open with their key \n (Las puertas se abren, con llave jejeje"),
+      "1,7": "I Hope the sun embrace you and the moon follow your life... (Espero y el sol te abrace siempre y la lune siga reflejando tus pasos en la noche...)\nTe gusta el pan? xD"
     };
     // =====================================
     // === HERRAMIENTAS GENERALES DEL JUEGO ===
@@ -312,11 +312,11 @@
 
         const clave = `${nx},${ny}`;
         if (tipo === 'e' && TRAMPAS[clave]?.estado === 'rojo') {
-          alert("¡Ay no! Pisaste una trampa en rojo 😖");
+          alert("ouh no, the butcher caught you (¡Ay no! Pisaste una trampa en rojo) 😖");
           // Puedes perder una trufa, reiniciar, etc.
           if (this.inventario.trufas > 0) {
             this.inventario.trufas--;
-            alert(`Perdiste una trufa 💔 Trufas restantes: ${this.inventario.trufas}`);
+            alert(` you lose an apple, apples:(Perdiste una trufa 💔 Trufas restantes:) ${this.inventario.trufas}`);
           }
           return;
         }
@@ -325,18 +325,18 @@
         if (['o', 't', 'n', 'e'].includes(tipo)) {
           if (tipo === 't') {
             this.inventario.llaves++;
-            alert("tienes una llave :3")
+            alert("You found a key! \n tienes una llave :3")
             //reproducirSonido('llaves');
           }
 
           if (tipo === 'n') {
             if (this.nivelEnCurso === "nivel_uno") {
-              alert("¡Nivel 1 completado! Prepárate para lo que sigue...");
+              alert("Level one complete! (¡Nivel 1 completado! Prepárate para lo que sigue...)");
               reproducirSonido('izquierda');
               this.cargarNivel("nivel_dos");
               return;
             } else {
-              alert("Feliz cumpleaños :3\nGanaste un detallito, \n¡Cuando gustes cambiarlo!");
+              alert("congratulations you've won the game! (YEI llegaste al fin)");
               //reproducirSonido('negra');
             }
           }
@@ -364,7 +364,7 @@
         if (celda === 'a') {
           this.nivelActual[ny][nx] = 'o';
           this.inventario.trufas++;
-          alert(`¡Encontraste una trufa! 🍄\nTrufas totales: ${this.inventario.trufas}`);
+          alert(`you've found an apple (¡Encontraste una trufa! 🍄\nTrufas totales:) ${this.inventario.trufas}`);
           this.dibujarmapa(this.nivelActual);
           reproducirSonido('derecha');
         }
@@ -373,26 +373,26 @@
           if (this.inventario.llaves > 0) {
             this.inventario.llaves--;
             this.nivelActual[ny][nx] = 'n';
-            alert("La puerta se ha abierto.");
+            alert("the door is open (La puerta se ha abierto.)");
             reproducirSonido('derecha');
             this.dibujarmapa(this.nivelActual);
           } else {
-            alert("Alto ahi, necesitas una llave primero");
+            alert("you need a key (Alto ahi, necesitas una llave primero)");
           }
         }
 
         else if (celda === 'p') {
           const clave = `${nx},${ny}`;
-          const mensaje = DIALOGOS[clave] || "Hola :3\nNo se que decir... jaja lit";
+          const mensaje = DIALOGOS[clave] || "I'm an error jejeje... Hola :3\nNo se que decir... jaja lit";
           alert(` :) ${mensaje}`);
         }
 
         else if (celda === 'q') {
-          const clave = ["vida", "bida", "La vida", "la bida", "lavida"];
-          let respuesta = prompt("¿Quién es la muda?\nPor cierto: Feliz casi cumpleaños n.n");
+          const clave = ["vida", "bida", "La vida", "la bida", "lavida", "life"];
+          let respuesta = prompt("¿Quién es la muda?\n Who or what is the mute?");
           if (!clave.includes(respuesta)) return;
           this.nivelActual[ny][nx] = 't';
-          alert("Felicidades! Has ganado un detallito de cumpleaños n.n. \nPuedes pasar por el cuando gustes");
+          alert("Felicidades! Has ganado, Congrats! you've won");
           this.dibujarmapa(this.nivelActual)
         }
       },
