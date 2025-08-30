@@ -217,9 +217,9 @@
                   DIALOGOS:
     */
     const DIALOGOS = {
-      "1,1": "Hi, What does the mute say?  \n (Hola! ¿Qué dice la muda? \n7u7r)",
+      "1,1": "Hi, What does the mute say? =Hola! ¿Qué dice la muda? \n7u7r)",
       "10,1": "Can you imagine the life as a garden... life as... \n (¿Y si la vida fuera un jardin... y si...)",
-      "5,10": "Doors only open with their key \n (Las puertas se abren, con llave jejeje"),
+      "5,10": "Doors only open with their key \n (Las puertas se abren, con llave jejeje)",
       "1,7": "I Hope the sun embrace you and the moon follow your life... (Espero y el sol te abrace siempre y la lune siga reflejando tus pasos en la noche...)\nTe gusta el pan? xD"
     };
     // =====================================
@@ -312,11 +312,11 @@
 
         const clave = `${nx},${ny}`;
         if (tipo === 'e' && TRAMPAS[clave]?.estado === 'rojo') {
-          alert("ouh no, the butcher caught you (¡Ay no! Pisaste una trampa en rojo) 😖");
+          alert("ouh no, the butcher caught you = ¡Ay no! Pisaste una trampa en rojo 😖");
           // Puedes perder una trufa, reiniciar, etc.
           if (this.inventario.trufas > 0) {
             this.inventario.trufas--;
-            alert(` you lose an apple, apples:(Perdiste una trufa 💔 Trufas restantes:) ${this.inventario.trufas}`);
+            alert(` you lose an apple, apples: = Perdiste una trufa 💔 Trufas restantes: ${this.inventario.trufas}`);
           }
           return;
         }
@@ -325,13 +325,13 @@
         if (['o', 't', 'n', 'e'].includes(tipo)) {
           if (tipo === 't') {
             this.inventario.llaves++;
-            alert("You found a key! \n tienes una llave :3")
+            alert("You found a key! = tienes una llave :3")
             //reproducirSonido('llaves');
           }
 
           if (tipo === 'n') {
             if (this.nivelEnCurso === "nivel_uno") {
-              alert("Level one complete! (¡Nivel 1 completado! Prepárate para lo que sigue...)");
+              alert("Level one complete! =¡Nivel 1 completado! Prepárate para lo que sigue...");
               reproducirSonido('izquierda');
               this.cargarNivel("nivel_dos");
               return;
